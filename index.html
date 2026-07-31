@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Price Change Tracker — Demo</title>
+<title>Pricing & Demand Response — Demo</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 <style>
 :root{--s0:#f9f9f7;--s1:#fcfcfb;--ink:#0b0b0b;--sec:#52514e;--muted:#898781;--grid:#e1e0d9;--border:rgba(11,11,11,.10);--blue:#6366f1;--orange:#eb6834;--aqua:#1baf7a;--yellow:#eda100;--good:#0ca30c;--warn:#fab219;--crit:#d03b3b;}
@@ -34,18 +34,39 @@ footer a{color:var(--ind);text-decoration:none;} footer a:hover{text-decoration:
 </style>
 </head>
 <body>
-<div class="demo-banner">⚠ DEMO DATA — Illustrative numbers only. Production: pricing demand response modeling across $400M+ strategic inventory portfolio.</div>
+<div style="background:#f1f5f9;border-bottom:1px solid #e2e8f0;padding:8px 32px;font-size:11px;color:#475569;text-align:center;">
+  <strong>Independent portfolio case study.</strong> All data, product categories, pricing scenarios and results are synthetic. This project does not reproduce any employer's data, systems or confidential business processes.
+</div>
+<div class="demo-banner">⚠ DEMO DATA — Illustrative numbers only. Production: pricing demand response modeling across large-scale inventory portfolio.</div>
 <header class="topbar">
   <div>
-    <div class="brand">Price Change Tracker</div>
-    <div class="sub">Demand Elasticity &amp; Pricing Response Monitoring</div>
+    <div class="brand">Pricing & Demand Response</div>
+    <div class="sub">Observed demand response, elasticity estimation and promotional lift analysis.</div>
   </div>
   <a href="../whitepaper.html" class="back-link">← Portfolio</a>
 </header>
 <main>
+  <div style="background:#f8f9ff;border-left:3px solid #6366f1;border-radius:8px;padding:16px;margin-bottom:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+  <div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6366f1;margin-bottom:4px;">Decision</div>
+    <div style="font-size:13px;color:#0f172a;">Should price be adjusted, and if so, by how much and for which product groups?</div>
+  </div>
+  <div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6366f1;margin-bottom:4px;">Recommendation</div>
+    <div style="font-size:13px;color:#0f172a;">High-sensitivity categories warrant conservative price changes with pre-positioned inventory; low-sensitivity categories can absorb larger moves without significant demand impact.</div>
+  </div>
+  <div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6366f1;margin-bottom:4px;">Evidence</div>
+    <div style="font-size:13px;color:#0f172a;">Observed demand response varies substantially across product groups · Promotional lift prediction within acceptable range for most events · High-sensitivity products require inventory adjustment before pricing actions</div>
+  </div>
+  <div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6366f1;margin-bottom:4px;">Primary Risk</div>
+    <div style="font-size:13px;color:#0f172a;">Elasticity estimates reflect observed demand response under specific conditions and may not generalize to new markets, competitive contexts or macroeconomic shifts.</div>
+  </div>
+</div>
   <div class="kpi-row">
-    <div class="kpi bl"><div class="lbl">Price Changes (4W)</div><div class="val">284</div><div class="delta" style="color:var(--muted)">Across 142 categories</div></div>
-    <div class="kpi or"><div class="lbl">Avg Elasticity</div><div class="val">−1.42</div><div class="delta" style="color:var(--warn)">Moderate sensitivity</div></div>
+    <div class="kpi bl"><div class="lbl">Price Changes (4W)</div><div class="val">varied</div><div class="delta" style="color:var(--muted)">Across multiple product groups</div></div>
+    <div class="kpi or"><div class="lbl">Avg Elasticity</div><div class="val">−0.6 to −1.8</div><div class="delta" style="color:var(--warn)">Range across product groups</div></div>
     <div class="kpi gd"><div class="lbl">Demand Lift (Promo)</div><div class="val">+18.3%</div><div class="delta" style="color:var(--good)">vs. baseline</div></div>
     <div class="kpi or"><div class="lbl">Forecast Adj Applied</div><div class="val">$2.1M</div><div class="delta" style="color:var(--muted)">Inv. repositioned</div></div>
     <div class="kpi gd"><div class="lbl">Prediction Accuracy</div><div class="val">81.4%</div><div class="delta" style="color:var(--good)">±15% of actual lift</div></div>
@@ -72,6 +93,16 @@ footer a{color:var(--ind);text-decoration:none;} footer a:hover{text-decoration:
       <tbody id="priceTable"></tbody>
     </table>
   </div>
+<div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin-top:20px;">
+  <strong style="font-size:12px;">Assumptions & Limitations</strong>
+  <ul style="margin-top:8px;font-size:12px;color:#52514e;padding-left:18px;">
+    <li>All data is synthetically generated; elasticity estimates do not reflect any real employer's pricing data.</li>
+    <li>Elasticity estimates reflect observed demand response, not causally identified effects.</li>
+    <li>Estimates assume stable competitive environment and may not generalize to new contexts.</li>
+    <li>Promotional lift predictions use a simplified model; real systems incorporate more features.</li>
+    <li>Analysis does not account for cannibalization between product groups.</li>
+  </ul>
+</div>
 </main>
 <footer>
   <span>⚠ Demo data</span>
@@ -83,7 +114,7 @@ const C={blue:'#6366f1',orange:'#eb6834',aqua:'#1baf7a',yellow:'#eda100',warn:'#
 const WKS=["Wk 1","Wk 2","Wk 3","Wk 4","Wk 5","Wk 6","Wk 7","Wk 8","Wk 9","Wk 10","Wk 11","Wk 12"];
 const base={responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{backgroundColor:'#fff',borderColor:C.grid,borderWidth:1,titleColor:'#0b0b0b',bodyColor:C.muted,padding:10}},scales:{x:{grid:{color:C.grid,lineWidth:.5},ticks:{color:C.muted,font:{size:11}}},y:{grid:{color:C.grid,lineWidth:.5},ticks:{color:C.muted,font:{size:11}},border:{dash:[3,3]}}}};
 
-new Chart(document.getElementById('elastChart'),{type:'bar',data:{labels:['Sparkling Water','Snacks','Dairy Alt','Frozen','Bread','Cereal','Canned Goods','Fresh Produce'],datasets:[{data:[-2.18,-1.84,-1.62,-1.44,-1.31,-1.12,-0.94,-0.72],backgroundColor:[C.crit,C.orange,C.orange,C.yellow,C.yellow,C.aqua,C.aqua,C.good],borderRadius:4,borderSkipped:false}]},options:{...base,indexAxis:'y',scales:{x:{...base.scales.x,title:{display:true,text:'Price Elasticity (ΔDemand% / ΔPrice%)',font:{size:11},color:C.muted}},y:base.scales.y}}});
+new Chart(document.getElementById('elastChart'),{type:'bar',data:{labels:['Category G','Category F','Category E','Category D','Category C','Category B','Category A','Category H'],datasets:[{data:[-2.18,-1.84,-1.62,-1.44,-1.31,-1.12,-0.94,-0.72],backgroundColor:[C.crit,C.orange,C.orange,C.yellow,C.yellow,C.aqua,C.aqua,C.good],borderRadius:4,borderSkipped:false}]},options:{...base,indexAxis:'y',scales:{x:{...base.scales.x,title:{display:true,text:'Price Elasticity (ΔDemand% / ΔPrice%)',font:{size:11},color:C.muted}},y:base.scales.y}}});
 
 new Chart(document.getElementById('liftChart'),{type:'line',data:{labels:WKS,datasets:[
   {label:'Predicted Lift %',data:[14.2,16.8,12.4,19.1,22.3,15.6,18.9,17.4,20.1,16.8,18.3,null],borderColor:C.blue,backgroundColor:C.blue+'18',fill:true,borderWidth:2,pointRadius:3,tension:.3,spanGaps:false},
@@ -91,11 +122,11 @@ new Chart(document.getElementById('liftChart'),{type:'line',data:{labels:WKS,dat
 ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{font:{size:11},color:'#52514e',boxWidth:8,padding:8}}},scales:{x:base.scales.x,y:{...base.scales.y,title:{display:true,text:'Demand Lift %',font:{size:11},color:C.muted}}}}});
 
 const rows=[
-  {sku:'SKU-29871',desc:'Sparkling Water 24pk',chg:'-15%',pred:'+22.3%',actual:'+23.9%',acc:'93%',adj:'$84K ↑',ok:true},
-  {sku:'SKU-12891',desc:'Organic Tortilla Chips',chg:'-10%',pred:'+16.8%',actual:'+17.9%',acc:'94%',adj:'$62K ↑',ok:true},
-  {sku:'SKU-51204',desc:'Baby Formula Stage 2',chg:'-8%',pred:'+12.4%',actual:'+11.8%',acc:'95%',adj:'$51K ↑',ok:true},
-  {sku:'SKU-44302',desc:'Ground Beef 3lb',chg:'-12%',pred:'+19.1%',actual:'+14.2%',acc:'74%',adj:'$78K ↑',ok:false},
-  {sku:'SKU-67831',desc:'Canned Diced Tomatoes',chg:'-5%',pred:'+8.4%',actual:'+9.1%',acc:'92%',adj:'$23K ↑',ok:true},
+  {sku:'PRD-G01',desc:'Product G — Standard Pack',chg:'-15%',pred:'+22.3%',actual:'+23.9%',acc:'93%',adj:'$84K ↑',ok:true},
+  {sku:'PRD-F01',desc:'Product F — Premium Variant',chg:'-10%',pred:'+16.8%',actual:'+17.9%',acc:'94%',adj:'$62K ↑',ok:true},
+  {sku:'PRD-E01',desc:'Product E — Core SKU',chg:'-8%',pred:'+12.4%',actual:'+11.8%',acc:'95%',adj:'$51K ↑',ok:true},
+  {sku:'PRD-D01',desc:'Product D — Main Unit',chg:'-12%',pred:'+19.1%',actual:'+14.2%',acc:'74%',adj:'$78K ↑',ok:false},
+  {sku:'PRD-A01',desc:'Product A — Value Pack',chg:'-5%',pred:'+8.4%',actual:'+9.1%',acc:'92%',adj:'$23K ↑',ok:true},
   {sku:'SKU-88312',desc:'Greek Yogurt Plain',chg:'-7%',pred:'+11.2%',actual:'+12.8%',acc:'88%',adj:'$38K ↑',ok:true},
   {sku:'SKU-33180',desc:'Chicken Seasoning',chg:'-20%',pred:'+28.4%',actual:'+18.6%',acc:'65%',adj:'$29K ↑',ok:false},
 ];
